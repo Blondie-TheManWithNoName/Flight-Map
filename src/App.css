@@ -1,38 +1,92 @@
-.App {
-  text-align: center;
+.App,
+body {
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.europe-map {
+  /* width: 100%; */
+  /* scale: 1.5; */
+  /* mask-image: linear-gradient(#061723 90%, transparent); */
+  /* border-right: 0.15rem solid #7fbeeb;
+  border-bottom: 0.15rem solid #7fbeeb;
+  border-bottom-right-radius: 1rem; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+main {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+path:hover {
+  cursor: pointer;
+  fill: #db3a34;
+}
+
+.clicked {
+  fill: #db3a34;
+}
+
+.mapa {
+  position: absolute;
+  width: 43%;
+  left: 26.9%;
+  top: -3%;
+  opacity: 25%;
+}
+
+.canvas {
+  /* width: 100%;
+  height: 100%; */
+  /* border: 2px solid red; */
+  background-image: url(./assets/europe_map.svg);
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+input[type="checkbox" i] {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.dot {
+  z-index: 2;
+  position: absolute;
+  border-radius: 50%;
+  width: 1.5%;
+  height: 1.5%;
+  border: none;
+  background-color: #959bc1;
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.dot:hover {
+  scale: 1.25;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.check:checked ~ .dot {
+  scale: 1.25;
+  background-color: #413c58;
+}
+.check:checked ~ .dot > .airport-name {
+  font-weight: 500;
+}
+.canvas-container {
+  position: relative;
+}
+
+.airport-name {
+  position: absolute;
+  top: 0.5rem;
+  user-select: none;
+  cursor: pointer;
+  z-index: 1;
 }
